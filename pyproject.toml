@@ -5,14 +5,20 @@ build-backend = "hatchling.build"
 [project]
 name = "minimax-tts"
 version = "0.1.0"
-description = "🎙️ MiniMax TTS CLI — 命令行语音合成工具，支持 100+ 音色、40 种语言"
+description = "🎙️ AI Voice Generator — MiniMax TTS CLI with 100+ voices in 40 languages, WebSocket streaming, MCP support"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
 authors = [
     {name = "Max Hou", email = "houxyue@hotmail.com"},
 ]
-keywords = ["tts", "text-to-speech", "minimax", "voice", "speech", "cli", "chinese"]
+keywords = [
+    "minimax", "tts", "text-to-speech", "voice", "speech", "audio",
+    "chinese-tts", "chinese-voice", "text-to-speech-api", "ai-voice",
+    "voice-cloning", "voice-generation", "speech-synthesis", "aigc",
+    "cli", "tool", "python", "mcp", "cursor", "claude-code", "agent-tools",
+    "elevenlabs-alternative", "openai-tts-alternative"
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
