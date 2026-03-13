@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "minimax-tts"
+version = "0.1.0"
+description = "🎙️ MiniMax TTS CLI — 命令行语音合成工具，支持 100+ 音色、40 种语言"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Max Hou", email = "houxyue@hotmail.com"},
+]
+keywords = ["tts", "text-to-speech", "minimax", "voice", "speech", "cli", "chinese"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+    "click>=8.0",
+    "requests>=2.28",
+    "websockets>=12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MaxHou-infinity/minimax-tts"
+Documentation = "https://github.com/MaxHou-infinity/minimax-tts#readme"
+Issues = "https://github.com/MaxHou-infinity/minimax-tts/issues"
+
+[project.scripts]
+minimax-tts = "minimax_tts.cli:main"
