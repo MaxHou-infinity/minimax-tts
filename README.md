@@ -1,5 +1,22 @@
 # 🎙️ MiniMax TTS CLI
 
+> **给 Agent 的一键安装（复制这段发给你的 AI Agent）：**
+
+```bash
+# 安装
+pip install git+https://github.com/MaxHou-infinity/minimax-tts.git
+
+# 配置 API Key（把 "你的API_KEY" 换成你的 MiniMax API Key）
+minimax-tts config --key "你的API_KEY"
+
+# 使用
+minimax-tts say "你好，我是你的 AI 助手"
+```
+
+---
+
+## 详细介绍
+
 命令行语音合成工具，基于 [MiniMax 中国区 API](https://platform.minimaxi.com/)。
 
 支持 **100+ 系统音色**、**40 种语言**，一行命令将文本变成语音。
