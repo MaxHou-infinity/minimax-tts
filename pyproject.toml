@@ -33,6 +33,9 @@ dependencies = [
     "websockets>=12.0",
 ]
 
+[project.optional-dependencies]
+mcp = ["mcp[cli]>=1.0"]
+
 [project.urls]
 Homepage = "https://github.com/MaxHou-infinity/minimax-tts"
 Documentation = "https://github.com/MaxHou-infinity/minimax-tts#readme"
@@ -40,3 +43,4 @@ Issues = "https://github.com/MaxHou-infinity/minimax-tts/issues"
 
 [project.scripts]
 minimax-tts = "minimax_tts.cli:main"
+minimax-tts-mcp = "minimax_tts.mcp_server:main"

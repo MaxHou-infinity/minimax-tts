@@ -100,9 +100,85 @@ minimax-tts test
 
 **日文/韩文/粤语** 等更多音色运行 `minimax-tts voices` 查看。
 
-## Agent 集成
+## 🤖 Agent 集成指南
 
-作为 AI Agent 的语音输出模块：
+### 方式 1：CLI 命令行（所有 Agent 通用）
+
+几乎所有 AI Agent 都能执行终端命令，这是最简单的集成方式：
+
+```bash
+# Agent 执行这条命令就能"说话"
+minimax-tts say "你好，我是你的 AI 助手"
+
+# 管道模式 — Agent 把回答通过管道传入
+echo "Agent 的回答内容" | minimax-tts say
+```
+
+**适用：** Hermes Agent、Claude Code、Codex、OpenClaw、任何能跑终端的 Agent
+
+只需在 Agent 的系统提示里加一句：
+> "你可以通过执行 `minimax-tts say "文本"` 来朗读回复"
+
+### 方式 2：MCP Server（Claude Code / Cursor / Windsurf）
+
+MCP 是 AI Agent 的标准工具协议。安装后 Agent 自动发现语音工具：
+
+```bash
+# 安装（含 MCP 依赖）
+pip install "minimax-tts[mcp] @ git+https://github.com/MaxHou-infinity/minimax-tts.git"
+```
+
+**Claude Code 配置** (`~/.claude.json`)：
+```json
+{
+  "mcpServers": {
+    "minimax-tts": {
+      "command": "minimax-tts-mcp",
+      "env": { "MINIMAX_API_KEY": "你的API_KEY" }
+    }
+  }
+}
+```
+
+**Cursor 配置** (`.cursor/mcp.json`)：
+```json
+{
+  "mcpServers": {
+    "minimax-tts": {
+      "command": "minimax-tts-mcp",
+      "env": { "MINIMAX_API_KEY": "你的API_KEY" }
+    }
+  }
+}
+```
+
+配置后，Agent 自动获得以下工具：
+- `speak` — 合成语音并播放
+- `speak_to_file` — 合成语音保存到文件
+- `list_voices` — 查看可用音色
+- `list_models` — 查看可用模型
+
+### 方式 3：Hermes Agent 原生集成
+
+MiniMax 已作为 Hermes Agent 的第 4 个 TTS provider 内置。配置 `~/.hermes/config.yaml`：
+
+```yaml
+tts:
+  provider: minimax
+  minimax:
+    voice_id: female-shaonv    # 音色
+    model: speech-2.8-hd       # 模型
+    speed: 1.0                 # 语速
+```
+
+然后设置环境变量：
+```bash
+echo 'MINIMAX_API_KEY=你的KEY' >> ~/.hermes/.env
+```
+
+Hermes Agent 的 `text_to_speech` 工具会自动使用 MiniMax。
+
+### 方式 4：Python 库直接调用
 
 ```python
 from minimax_tts.client import MiniMaxTTS
